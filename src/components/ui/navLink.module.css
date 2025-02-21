@@ -1,0 +1,12 @@
+.navlink {
+    color: var(--yellow);
+    fill: var(--yellow);
+    display: flex;
+    align-items: center;
+    column-gap: 7px;
+}
+
+.navlink svg {
+    width: 24px;
+    height: 24px;
+}
