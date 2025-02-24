@@ -2,16 +2,18 @@
 
 import { motion } from "motion/react";
 import styles from "./ui/repeatButton.module.css";
-import { useState } from "react";
+import { useStoreTime } from "../store/storeTime";
 
 export default function RepeatInput() {
-    const [isOn, setIsOn] = useState(false);
-
-    const toggleSwitch = () => setIsOn(!isOn);
+    const isRepeat = useStoreTime((state) => state.isRepeat);
+    const toggle = useStoreTime((state) => state.toggleRepeat);
+    const toggleRepeat = () => {
+        toggle();
+    };
 
     return (
         <li>
-            <div className={styles.container} onClick={toggleSwitch}>
+            <div className={styles.container} onClick={toggleRepeat}>
                 <motion.span
                     className={styles.label}
                     initial={{ scale: 1 }}
@@ -23,7 +25,7 @@ export default function RepeatInput() {
                 <button
                     className={styles.btnContainer}
                     style={{
-                        justifyContent: "flex-" + (!isOn ? "start" : "end"),
+                        justifyContent: "flex-" + (isRepeat ? "end" : "start"),
                     }}
                 >
                     <motion.div

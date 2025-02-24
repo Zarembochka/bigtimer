@@ -1,18 +1,25 @@
 import { create } from "zustand";
+import { useSearchParams } from "next/navigation";
 
 interface IStoreTime {
     time: number;
     isTimerStart: boolean;
+    isRepeat: boolean;
     increase: () => void;
     decrease: () => void;
     start: () => void;
+    toggleRepeat: () => void;
+    setTime: (seconds: number) => void;
+    updateSearchParams: (seconds: number) => void;
 }
 
 export const useStoreTime = create<IStoreTime>((set, get) => {
     let intervalId: NodeJS.Timeout | null = null;
+    const searchParams = new URLSearchParams(window.location.search);
     return {
         time: 600,
         isTimerStart: false,
+        isRepeat: false,
         increase: () =>
             set((state) => {
                 let newTime = state.time;
@@ -23,6 +30,7 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                 } else {
                     newTime += 60;
                 }
+                get().updateSearchParams(newTime);
                 return { time: newTime };
             }),
         decrease: () =>
@@ -37,6 +45,7 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                 } else {
                     newTime -= 60;
                 }
+                get().updateSearchParams(newTime);
                 return { time: newTime };
             }),
         start: () => {
@@ -59,6 +68,22 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                     });
                 }, 1000);
             }
+        },
+        toggleRepeat: () => {
+            set((state) => ({ isRepeat: !state.isRepeat }));
+            const { time } = get();
+            get().updateSearchParams(time);
+        },
+        setTime: (seconds: number) => {
+            set((state) => ({ time: seconds }));
+            get().updateSearchParams(seconds);
+        },
+        updateSearchParams: (seconds: number) => {
+            const { isRepeat } = get();
+            searchParams.set("seconds", seconds.toString());
+            searchParams.set("repeat", String(isRepeat));
+            const newUrl = window.location.pathname + "?" + searchParams.toString();
+            window.history.replaceState({}, "", newUrl);
         },
     };
 });
