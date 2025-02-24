@@ -1,19 +1,25 @@
 "use client";
 
-import { useState } from "react";
 import styles from "./ui/timer.module.css";
+import { useStore } from "../store/store";
 
 function displayTime(time: number) {
     const timeString = String(time).padStart(2, "0");
     return timeString;
 }
 
+function getTimeFromSeconds(time: number): [minutes: number, seconds: number] {
+    const minutes = Math.floor(time / 60);
+    const seconds = time - 60 * minutes;
+    return [minutes, seconds];
+}
+
 export function Timer() {
-    const [minutes, setMinutes] = useState(10);
-    const [sekonds, setSeconds] = useState(0);
+    const time = useStore((state) => state.time);
+    const [minutes, seconds] = getTimeFromSeconds(time);
     return (
         <div className={styles.timer}>
-            <span>{displayTime(minutes)}</span>:<span>{displayTime(sekonds)}</span>
+            <span>{displayTime(minutes)}</span>:<span>{displayTime(seconds)}</span>
         </div>
     );
 }
