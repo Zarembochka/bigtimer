@@ -2,10 +2,10 @@
 
 import { motion } from "motion/react";
 import styles from "./ui/primaryButton.module.css";
-import { useStore } from "../store/store";
+import { useStoreTime } from "../store/storeTime";
 
 export function IncTimerButton() {
-    const increase = useStore((state) => state.increase);
+    const increase = useStoreTime((state) => state.increase);
     const incTime = () => {
         increase();
     };

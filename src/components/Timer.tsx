@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./ui/timer.module.css";
-import { useStore } from "../store/store";
+import { useStoreTime } from "../store/storeTime";
 
 function displayTime(time: number) {
     const timeString = String(time).padStart(2, "0");
@@ -15,7 +15,7 @@ function getTimeFromSeconds(time: number): [minutes: number, seconds: number] {
 }
 
 export function Timer() {
-    const time = useStore((state) => state.time);
+    const time = useStoreTime((state) => state.time);
     const [minutes, seconds] = getTimeFromSeconds(time);
     return (
         <div className={styles.timer}>

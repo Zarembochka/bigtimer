@@ -1,7 +1,6 @@
-import { time } from "console";
 import { create } from "zustand";
 
-interface IStore {
+interface IStoreTime {
     time: number;
     isTimerStart: boolean;
     increase: () => void;
@@ -9,7 +8,7 @@ interface IStore {
     start: () => void;
 }
 
-export const useStore = create<IStore>((set, get) => {
+export const useStoreTime = create<IStoreTime>((set, get) => {
     let intervalId: NodeJS.Timeout | null = null;
     return {
         time: 600,

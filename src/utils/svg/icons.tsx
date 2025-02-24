@@ -53,3 +53,18 @@ export function FullscreenIcon() {
         </svg>
     );
 }
+
+export function NotFullcreenIcon() {
+    return (
+        <svg width="64px" height="64px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M1 6L6 6L6 1L4.2 1L4.2 4.2L1 4.2L1 6Z" fill="currentColor"></path>
+                <path d="M15 10L10 10L10 15L11.8 15L11.8 11.8L15 11.8L15 10Z" fill="currentColor"></path>
+                <path d="M6 15L6 10L1 10L1 11.8L4.2 11.8L4.2 15L6 15Z" fill="currentColor"></path>
+                <path d="M10 1L10 6L15 6L15 4.2L11.8 4.2L11.8 1L10 1Z" fill="currentColor"></path>
+            </g>
+        </svg>
+    );
+}

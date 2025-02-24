@@ -2,12 +2,12 @@
 
 import { motion } from "motion/react";
 import styles from "./ui/primaryButton.module.css";
-import { useStore } from "../store/store";
+import { useStoreTime } from "../store/storeTime";
 
 export function StartButton() {
-    const time = useStore((state) => state.time);
-    const isTimerStart = useStore((state) => state.isTimerStart);
-    const start = useStore((state) => state.start);
+    const time = useStoreTime((state) => state.time);
+    const isTimerStart = useStoreTime((state) => state.isTimerStart);
+    const start = useStoreTime((state) => state.start);
     const startTime = () => {
         start();
     };
