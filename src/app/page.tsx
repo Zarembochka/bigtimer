@@ -21,7 +21,7 @@ export default function Home() {
             const parsedSeconds = parseInt(seconds, 10);
             setTime(parsedSeconds);
         }
-    }, [searchParams, setTime]);
+    }, [searchParams, setTime, seconds]);
 
     return (
         <div className={styles.page}>

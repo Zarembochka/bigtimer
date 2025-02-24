@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { useSearchParams } from "next/navigation";
 
 interface IStoreTime {
     time: number;
@@ -75,7 +74,7 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
             get().updateSearchParams(time);
         },
         setTime: (seconds: number) => {
-            set((state) => ({ time: seconds }));
+            set(() => ({ time: seconds }));
             get().updateSearchParams(seconds);
         },
         updateSearchParams: (seconds: number) => {

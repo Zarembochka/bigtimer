@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import styles from "./ui/primaryButton.module.css";
 import { IncTimerButton } from "./IncTimerButton";
 import { DecTimerButton } from "./DecTimerButton";
