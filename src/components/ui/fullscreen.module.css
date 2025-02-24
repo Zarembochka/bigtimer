@@ -1,6 +1,6 @@
-.navlink {
-    color: inherit;
+.container {
     display: flex;
     align-items: center;
     column-gap: 7px;
+    cursor: pointer;
 }

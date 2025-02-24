@@ -1,0 +1,16 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: var(--yellow);
+    & ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        column-gap: 15px;
+    }
+    & svg {
+        width: 24px;
+        height: 24px;
+    }
+}

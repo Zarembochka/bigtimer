@@ -33,3 +33,23 @@ export function BlogIcon() {
         </svg>
     );
 }
+
+export function FullscreenIcon() {
+    return (
+        <svg width="64px" height="64px" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                    <g transform="translate(1.000000, 3.000000)" fill="currentColor">
+                        <rect x="2" y="2" width="12" height="8"></rect>
+                        <path d="M2.918,11.938 L0,11.938 L0,9.062 L1,9.062 L1,11.042 L2.918,11.042 L2.918,11.938 Z"></path>
+                        <path d="M16,11.938 L13.062,11.938 L13.062,11.042 L15,11.042 L15,9.058 L16,9.058 L16,11.938 Z"></path>
+                        <path d="M16,2.917 L15,2.917 L15,0.967 L13.057,0.967 L13.057,0.021 L16,0.021 L16,2.917 Z"></path>
+                        <path d="M1,2.938 L0,2.938 L0,0 L2.938,0 L2.938,0.938 L1,0.938 L1,2.938 Z"> </path>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    );
+}

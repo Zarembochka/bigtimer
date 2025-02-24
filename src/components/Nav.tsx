@@ -4,12 +4,12 @@ import styles from "./ui/nav.module.css";
 
 export default function Nav() {
     return (
-        <>
-            <nav className={styles.nav}>
+        <nav className={styles.nav}>
+            <ul>
                 <NavLink title="Info" hrefSrc="" icon={<InfoIcon />} />
                 <NavLink title="Preferences" hrefSrc="" icon={<PrefencesIcon />} />
                 <NavLink title="Blog" hrefSrc="" icon={<BlogIcon />} />
-            </nav>
-        </>
+            </ul>
+        </nav>
     );
 }

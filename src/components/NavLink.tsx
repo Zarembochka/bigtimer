@@ -14,10 +14,12 @@ interface INavLink {
 export default function NavLink(props: INavLink) {
     return (
         <motion.div initial={{ scale: 1 }} transition={{ duration: 0.5 }} whileHover={{ scale: 1.15 }}>
-            <Link className={styles.navlink} href={props.hrefSrc}>
-                {props.icon}
-                {props.title}
-            </Link>
+            <li>
+                <Link className={styles.navlink} href={props.hrefSrc}>
+                    {props.icon}
+                    {props.title}
+                </Link>
+            </li>
         </motion.div>
     );
 }
