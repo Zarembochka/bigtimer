@@ -3,6 +3,17 @@
     align-items: center;
     column-gap: 15px;
     cursor: pointer;
+    &:hover {
+        .btnContainer {
+            border: 1px solid var(--orange);
+        }
+        .btnHandle {
+            background-color: var(--orange);
+        }
+        .label {
+            color: var(--orange);
+        }
+    }
 }
 
 .label {

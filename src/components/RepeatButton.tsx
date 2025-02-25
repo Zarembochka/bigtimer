@@ -22,8 +22,9 @@ export default function RepeatInput() {
                 >
                     Repeat
                 </motion.span>
-                <button
+                <motion.button
                     className={styles.btnContainer}
+                    transition={{ duration: 0.5 }}
                     style={{
                         justifyContent: "flex-" + (isRepeat ? "end" : "start"),
                     }}
@@ -37,7 +38,7 @@ export default function RepeatInput() {
                             bounce: 0.2,
                         }}
                     />
-                </button>
+                </motion.button>
             </div>
         </li>
     );

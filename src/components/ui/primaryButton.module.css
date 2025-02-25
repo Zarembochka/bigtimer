@@ -12,6 +12,9 @@
     &:disabled {
         visibility: hidden;
     }
+    &:hover {
+        background-color: var(--orange);
+    }
 }
 
 .roundedBtn {
