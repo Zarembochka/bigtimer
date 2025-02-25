@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 interface IStoreTime {
     time: number;
+    initialTime: number;
     isTimerStart: boolean;
     isRepeat: boolean;
     increase: () => void;
@@ -17,11 +18,12 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
     const searchParams = new URLSearchParams(window.location.search);
     return {
         time: 600,
+        initialTime: 600,
         isTimerStart: false,
         isRepeat: false,
         increase: () =>
             set((state) => {
-                let newTime = state.time;
+                let newTime = state.initialTime;
                 if (newTime < 30) {
                     newTime += 5;
                 } else if (newTime < 300) {
@@ -30,11 +32,11 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                     newTime += 60;
                 }
                 get().updateSearchParams(newTime);
-                return { time: newTime };
+                return { initialTime: newTime, time: newTime };
             }),
         decrease: () =>
             set((state) => {
-                let newTime = state.time;
+                let newTime = state.initialTime;
                 if (newTime === 0) {
                     newTime = 0;
                 } else if (newTime <= 30) {
@@ -45,9 +47,10 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                     newTime -= 60;
                 }
                 get().updateSearchParams(newTime);
-                return { time: newTime };
+                return { initialTime: newTime, time: newTime };
             }),
         start: () => {
+            const { initialTime } = get();
             if (intervalId) {
                 clearInterval(intervalId);
             }
@@ -63,18 +66,27 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                         if (state.time > 0) {
                             return { time: state.time - 1 };
                         }
-                        return { time: 0 };
+                        const { isRepeat } = get();
+                        if (isRepeat) {
+                            set(() => ({ time: initialTime }));
+                            return { time: initialTime };
+                        }
+                        if (intervalId) {
+                            clearInterval(intervalId);
+                        }
+                        return { time: 0, isTimerStart: !state.isTimerStart };
                     });
                 }, 1000);
             }
         },
         toggleRepeat: () => {
+            const { initialTime } = get();
             set((state) => ({ isRepeat: !state.isRepeat }));
-            const { time } = get();
-            get().updateSearchParams(time);
+            get().updateSearchParams(initialTime);
         },
         setTime: (seconds: number) => {
             set(() => ({ time: seconds }));
+            set(() => ({ initialTime: seconds }));
             get().updateSearchParams(seconds);
         },
         updateSearchParams: (seconds: number) => {
