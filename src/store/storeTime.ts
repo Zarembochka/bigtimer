@@ -10,12 +10,10 @@ interface IStoreTime {
     start: () => void;
     toggleRepeat: () => void;
     setTime: (seconds: number) => void;
-    updateSearchParams: (seconds: number) => void;
 }
 
 export const useStoreTime = create<IStoreTime>((set, get) => {
     let intervalId: NodeJS.Timeout | null = null;
-    const searchParams = new URLSearchParams(window.location.search);
     return {
         time: 600,
         initialTime: 600,
@@ -31,7 +29,6 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                 } else {
                     newTime += 60;
                 }
-                get().updateSearchParams(newTime);
                 return { initialTime: newTime, time: newTime };
             }),
         decrease: () =>
@@ -46,7 +43,6 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                 } else {
                     newTime -= 60;
                 }
-                get().updateSearchParams(newTime);
                 return { initialTime: newTime, time: newTime };
             }),
         start: () => {
@@ -80,21 +76,11 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
             }
         },
         toggleRepeat: () => {
-            const { initialTime } = get();
             set((state) => ({ isRepeat: !state.isRepeat }));
-            get().updateSearchParams(initialTime);
         },
         setTime: (seconds: number) => {
             set(() => ({ time: seconds }));
             set(() => ({ initialTime: seconds }));
-            get().updateSearchParams(seconds);
-        },
-        updateSearchParams: (seconds: number) => {
-            const { isRepeat } = get();
-            searchParams.set("seconds", seconds.toString());
-            searchParams.set("repeat", String(isRepeat));
-            const newUrl = window.location.pathname + "?" + searchParams.toString();
-            window.history.replaceState({}, "", newUrl);
         },
     };
 });

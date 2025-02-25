@@ -5,7 +5,7 @@ import styles from "./ui/repeatButton.module.css";
 import { useStoreTime } from "../store/storeTime";
 
 export default function RepeatInput() {
-    const isRepeat = useStoreTime((state) => state.isRepeat);
+    const { isRepeat } = useStoreTime();
     const toggle = useStoreTime((state) => state.toggleRepeat);
     const toggleRepeat = () => {
         toggle();
