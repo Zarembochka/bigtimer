@@ -1,0 +1,28 @@
+.primaryBtn {
+    width: 5rem;
+    font-size: 1.1rem;
+    border-radius: 999px;
+    background-color: var(--yellow);
+    color: var(--black);
+    border: none;
+    cursor: pointer;
+    height: 3rem;
+    font-weight: 600;
+    visibility: visible;
+    &:disabled {
+        visibility: hidden;
+    }
+    &:hover {
+        background-color: var(--orange);
+    }
+}
+
+.roundedBtn {
+    width: 3rem;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}

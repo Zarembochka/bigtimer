@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    align-items: center;
+    column-gap: 7px;
+    cursor: pointer;
+    &:hover {
+        color: var(--orange);
+    }
+}

@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    cursor: pointer;
+    &:hover {
+        .btnContainer {
+            border: 1px solid var(--orange);
+        }
+        .btnHandle {
+            background-color: var(--orange);
+        }
+        .label {
+            color: var(--orange);
+        }
+    }
+}
+
+.label {
+    cursor: pointer;
+}
+
+.btnContainer {
+    width: 52px;
+    height: 28px;
+    background-color: transparent;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    padding: 1px;
+    outline: none;
+    border: 1px solid var(--yellow);
+}
+
+.btnHandle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--yellow);
+}

@@ -1,0 +1,9 @@
+.navlink {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    column-gap: 7px;
+    &:hover {
+        color: var(--orange);
+    }
+}
