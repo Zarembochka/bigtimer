@@ -10,10 +10,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: {
-        template: "%s | Bigtimer",
-        default: "Bigtimer",
-    },
     description: "Countdown timer for workshops, presentations and meetings",
 };
 
