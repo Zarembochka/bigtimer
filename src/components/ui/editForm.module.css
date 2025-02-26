@@ -1,0 +1,29 @@
+.form {
+    background-color: var(--background);
+    padding: 10px;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 5;
+    font-size: 12vw;
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+}
+
+.divider {
+    color: var(--foreground);
+}
+
+.input {
+    border: none;
+    outline: none;
+    line-height: 10vw;
+    font-size: 10vw;
+    font-family: inherit;
+    width: 15vw;
+    padding: 0;
+    text-align: center;
+    &:focus {
+        cursor: default;
+    }
+}

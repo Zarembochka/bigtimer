@@ -1,5 +1,6 @@
 "use client";
 
+import { StartButton } from "./StartButton";
 import { Timer } from "./Timer";
 import { TimerControls } from "./TimerControls";
 import styles from "../app/page.module.css";
@@ -7,7 +8,6 @@ import styles from "../app/page.module.css";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useStoreTime } from "@/store/storeTime";
 import { useEffect } from "react";
-import { StartAndResetButtons } from "./StartAndResetButtons";
 
 export function Main() {
     const { initialTime, isRepeat, isTimerStart } = useStoreTime();
@@ -30,7 +30,7 @@ export function Main() {
 
     return (
         <main className={styles.main}>
-            <StartAndResetButtons />
+            <StartButton />
             <Timer />
             <TimerControls />
         </main>
