@@ -9,8 +9,9 @@ import { Main } from "@/components/Main";
 
 export default function Home() {
     const searchParams = useSearchParams();
-    const setTime = useStoreTime((state) => state.setTime);
+    const { setTime, setRepeat } = useStoreTime();
     const seconds = searchParams.get("seconds");
+    const repeat = searchParams.get("repeat");
 
     useEffect(() => {
         if (!seconds) {
@@ -18,6 +19,7 @@ export default function Home() {
         } else {
             const parsedSeconds = parseInt(seconds, 10);
             setTime(parsedSeconds);
+            setRepeat(repeat === "true");
         }
     }, [searchParams, setTime, seconds]);
 

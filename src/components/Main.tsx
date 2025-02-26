@@ -10,7 +10,7 @@ import { useStoreTime } from "@/store/storeTime";
 import { useEffect } from "react";
 
 export function Main() {
-    const { initialTime, isRepeat } = useStoreTime();
+    const { initialTime, isRepeat, isTimerStart } = useStoreTime();
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
@@ -19,8 +19,11 @@ export function Main() {
         const params = new URLSearchParams(searchParams);
         params.set("seconds", initialTime.toString());
         params.set("repeat", String(isRepeat));
+        // if (isTimerStart) {
+        //     params.set("target", String(Date.now()));
+        // }
         replace(`${pathname}?${params.toString()}`);
-    }, [initialTime, isRepeat, pathname, replace, searchParams]);
+    }, [initialTime, isRepeat, isTimerStart, pathname, replace, searchParams]);
 
     return (
         <main className={styles.main}>
