@@ -21,7 +21,7 @@ export default function Home() {
             setTime(parsedSeconds);
             setRepeat(repeat === "true");
         }
-    }, [searchParams, setTime, seconds]);
+    }, [searchParams, setTime, setRepeat, repeat, seconds]);
 
     return (
         <div className={styles.page}>
