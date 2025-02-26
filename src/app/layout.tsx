@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-    display: "swap",
-});
 
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
@@ -30,7 +24,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+            <body className={`${geistMono.variable}`}>
                 <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </body>
         </html>
