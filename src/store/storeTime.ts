@@ -26,8 +26,13 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                     newTime += 5;
                 } else if (newTime < 300) {
                     newTime += 30;
-                } else {
+                } else if (newTime < 3600) {
                     newTime += 60;
+                } else {
+                    newTime += 900;
+                }
+                if (newTime >= 86400) {
+                    newTime = 86400;
                 }
                 return { initialTime: newTime, time: newTime };
             }),
@@ -79,6 +84,9 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
             set((state) => ({ isRepeat: !state.isRepeat }));
         },
         setTime: (seconds: number) => {
+            if (seconds > 86400) {
+                seconds = 86400;
+            }
             set(() => ({ time: seconds }));
             set(() => ({ initialTime: seconds }));
         },
