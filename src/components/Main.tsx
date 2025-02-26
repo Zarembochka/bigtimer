@@ -21,6 +21,7 @@ export function Main() {
         params.set("repeat", String(isRepeat));
         replace(`${pathname}?${params.toString()}`);
     }, [initialTime, isRepeat, pathname, replace, searchParams]);
+
     return (
         <main className={styles.main}>
             <StartButton />
