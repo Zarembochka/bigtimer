@@ -27,7 +27,7 @@ export function StartButton() {
             disabled={time === 0}
             onClick={startTime}
         >
-            {isTimerStart ? "Pause" : "Start"}
+            {isFormShown ? "Apply" : isTimerStart ? "Pause" : "Start"}
         </motion.button>
     );
 }

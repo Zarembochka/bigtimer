@@ -21,7 +21,7 @@ export function useTimerParamsFromSearchParams() {
                 const parsedTarget = parseInt(target, 10);
                 const passedTime = Date.now() - parsedTarget;
                 leftSeconds = Math.max(parsedSeconds - Math.floor(passedTime / 1000), 0);
-                isTimerStarted = true;
+                isTimerStarted = leftSeconds > 0;
             }
             setTime(parsedSeconds, leftSeconds, isTimerStarted);
             setRepeat(repeat === "true");
