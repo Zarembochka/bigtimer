@@ -3,12 +3,6 @@ import styles from "./ui/editForm.module.css";
 import { useStoreEditForm } from "@/store/storeEditForm";
 import { EditInput } from "./EditInput";
 
-interface IEditForm {
-    hours: number;
-    minutes: number;
-    seconds: number;
-}
-
 export function EditForm() {
     const { isFormShown } = useStoreEditForm();
 

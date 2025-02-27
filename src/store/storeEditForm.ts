@@ -8,7 +8,7 @@ interface IStoreEditForm {
     setEditedTimeByValues: (hours: number, minutes: number, seconds: number) => void;
 }
 
-export const useStoreEditForm = create<IStoreEditForm>((set, get) => {
+export const useStoreEditForm = create<IStoreEditForm>((set) => {
     return {
         editedTime: 0,
         isFormShown: false,

@@ -12,7 +12,9 @@ export function Timer() {
     const [hours, minutes, seconds] = getTimeFromSeconds(time);
     const { toggle, setEditedTime } = useStoreEditForm();
     const toggleEditForm = () => {
-        !isTimerStart && toggle();
+        if (!isTimerStart) {
+            toggle();
+        }
         setEditedTime(initialTime);
     };
     useEffect(() => {
