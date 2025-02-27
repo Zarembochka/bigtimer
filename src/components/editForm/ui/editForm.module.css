@@ -17,11 +17,11 @@
 .input {
     border: none;
     outline: none;
-    line-height: 12vw;
-    font-size: 12vw;
+    line-height: 1.15;
+    font-size: 15vw;
     font-weight: bold;
     font-family: inherit;
-    width: 15vw;
+    width: 17vw;
     padding: 0;
     text-align: center;
     color: var(--brown);
@@ -29,5 +29,22 @@
         cursor: default;
         color: var(--foreground);
         background-color: var(--yellow-edit);
+    }
+}
+
+.digits {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 1.25vw;
+    justify-content: center;
+    & span {
+        grid-column: 2;
+        display: flex;
+        justify-content: center;
     }
 }

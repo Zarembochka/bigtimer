@@ -9,12 +9,17 @@ interface IEditInput {
 export function EditInput({ name }: IEditInput) {
     const { value, changeHandle, wheelHandle } = useEditInputLogic(name);
     return (
-        <input
-            className={styles.input}
-            name={name}
-            value={displayTime(value)}
-            onChange={(e) => changeHandle(e)}
-            onWheel={(e) => wheelHandle(e, name)}
-        />
+        <div className={styles.digits}>
+            <input
+                className={styles.input}
+                name={name}
+                value={displayTime(value)}
+                onChange={(e) => changeHandle(e)}
+                onWheel={(e) => wheelHandle(e, name)}
+            />
+            <label htmlFor={name} className={styles.label}>
+                <span>{name}</span>
+            </label>
+        </div>
     );
 }
