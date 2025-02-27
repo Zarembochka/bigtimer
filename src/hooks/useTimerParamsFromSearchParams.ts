@@ -10,6 +10,7 @@ export function useTimerParamsFromSearchParams() {
     const target = searchParams.get("target");
 
     useEffect(() => {
+        let isTimerStarted = false;
         if (!seconds) {
             setTime(600);
         } else {
@@ -20,8 +21,9 @@ export function useTimerParamsFromSearchParams() {
                 const parsedTarget = parseInt(target, 10);
                 const passedTime = Date.now() - parsedTarget;
                 leftSeconds = Math.max(parsedSeconds - Math.floor(passedTime / 1000), 0);
+                isTimerStarted = true;
             }
-            setTime(parsedSeconds, leftSeconds, true);
+            setTime(parsedSeconds, leftSeconds, isTimerStarted);
             setRepeat(repeat === "true");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -12,7 +12,7 @@ export function StartButton() {
     const startTime = () => {
         if (isFormShown) {
             toggle();
-            setTime(editedTime, editedTime);
+            setTime(editedTime);
             return;
         }
         start();
