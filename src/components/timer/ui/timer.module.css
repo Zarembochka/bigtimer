@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.hours {
+    display: flex;
+}
+
+.timer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: inherit;
+    font-size: 15vw;
+}
+
+.digits {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    font-size: 15vw;
+    letter-spacing: 0.25vw;
+}
+
+.label {
+    display: grid;
+    grid-template-columns: 1fr 0.25vw 1fr;
+    font-size: 1.25vw;
+    & span {
+        letter-spacing: normal;
+        grid-column: 3;
+        display: flex;
+        justify-content: center;
+    }
+}
