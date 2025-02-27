@@ -21,7 +21,7 @@ export function useTimerParamsFromSearchParams() {
                 const passedTime = Date.now() - parsedTarget;
                 leftSeconds = Math.max(parsedSeconds - Math.floor(passedTime / 1000), 0);
             }
-            setTime(parsedSeconds, leftSeconds);
+            setTime(parsedSeconds, leftSeconds, true);
             setRepeat(repeat === "true");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

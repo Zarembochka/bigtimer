@@ -3,7 +3,7 @@
 import { StartButton } from "./StartButton";
 import { Timer } from "./Timer";
 import { TimerControls } from "./TimerControls";
-import styles from "../app/page.module.css";
+import styles from "../../app/page.module.css";
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useStoreTime } from "@/store/storeTime";
@@ -19,9 +19,11 @@ export function Main() {
         const params = new URLSearchParams(searchParams);
         params.set("seconds", initialTime.toString());
         params.set("repeat", String(isRepeat));
-        if (isTimerStart) {
+        const target = params.get("target");
+        if (isTimerStart && !target) {
             params.set("target", String(Date.now()));
-        } else {
+        }
+        if (!isTimerStart) {
             params.delete("target");
         }
         replace(`${pathname}?${params.toString()}`);

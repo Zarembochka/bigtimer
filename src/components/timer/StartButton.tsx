@@ -2,15 +2,22 @@
 
 import { motion } from "motion/react";
 import styles from "./ui/primaryButton.module.css";
-import { useStoreTime } from "../store/storeTime";
+import { useStoreTime } from "@/store/storeTime";
+import { useStoreEditForm } from "@/store/storeEditForm";
 
 export function StartButton() {
-    const time = useStoreTime((state) => state.time);
-    const isTimerStart = useStoreTime((state) => state.isTimerStart);
-    const start = useStoreTime((state) => state.start);
+    const { time, isTimerStart, start, setTime } = useStoreTime();
+    const { isFormShown, editedTime, toggle } = useStoreEditForm();
+
     const startTime = () => {
+        if (isFormShown) {
+            toggle();
+            setTime(editedTime, editedTime);
+            return;
+        }
         start();
     };
+
     return (
         <motion.button
             initial={{ scale: 1 }}

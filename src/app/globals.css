@@ -5,6 +5,8 @@
     --black: #000000;
     --yellow: #fc0;
     --orange: #ffa500;
+    --brown: #382d00;
+    --yellow-edit: rgb(251, 239, 189);
 }
 
 @media (prefers-color-scheme: dark) {

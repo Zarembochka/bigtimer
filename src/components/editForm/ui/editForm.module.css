@@ -17,13 +17,17 @@
 .input {
     border: none;
     outline: none;
-    line-height: 10vw;
-    font-size: 10vw;
+    line-height: 12vw;
+    font-size: 12vw;
+    font-weight: bold;
     font-family: inherit;
     width: 15vw;
     padding: 0;
     text-align: center;
+    color: var(--brown);
     &:focus {
         cursor: default;
+        color: var(--foreground);
+        background-color: var(--yellow-edit);
     }
 }
