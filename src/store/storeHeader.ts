@@ -2,14 +2,18 @@ import { create } from "zustand";
 
 interface IStoreHeader {
     isHeader: boolean;
-    toggleHeader: () => void;
+    setHeader: () => void;
+    hideHeader: () => void;
 }
 
-export const useStoreFullscreen = create<IStoreHeader>((set, get) => {
+export const useStoreHeader = create<IStoreHeader>((set) => {
     return {
-        isHeader: false,
-        toggleHeader: () => {
-            set((state) => ({ isHeader: !state.isHeader }));
+        isHeader: true,
+        setHeader: () => {
+            set(() => ({ isHeader: true }));
+        },
+        hideHeader: () => {
+            set(() => ({ isHeader: false }));
         },
     };
 });
