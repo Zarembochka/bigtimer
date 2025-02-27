@@ -30,8 +30,9 @@
 
 .main {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    justify-items: center;
     align-items: center;
 }
 
