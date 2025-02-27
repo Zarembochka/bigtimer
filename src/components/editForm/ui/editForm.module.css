@@ -7,7 +7,6 @@
     font-size: 12vw;
     display: flex;
     align-items: center;
-    max-width: 1000px;
 }
 
 .divider {
@@ -19,9 +18,8 @@
     outline: none;
     line-height: 1.15;
     font-size: 15vw;
-    font-weight: bold;
     font-family: inherit;
-    width: 17vw;
+    width: 18vw;
     padding: 0;
     text-align: center;
     color: var(--brown);
@@ -38,10 +36,10 @@
 }
 
 .label {
+    color: var(--brown);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    font-size: 1.25vw;
-    justify-content: center;
+    font-size: 1.1vw;
     & span {
         grid-column: 2;
         display: flex;

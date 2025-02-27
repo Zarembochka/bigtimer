@@ -1,11 +1,12 @@
 "use client";
 
 import styles from "./ui/timer.module.css";
-import { useStoreTime } from "../../store/storeTime";
+import { useStoreTime } from "@/store/storeTime";
 import { useEffect } from "react";
-import { EditForm } from "../editForm/EditForm";
+import { EditForm } from "@/components/editForm/EditForm";
 import { useStoreEditForm } from "@/store/storeEditForm";
 import { displayTime, getTimeFromSeconds } from "@/utils/helpers";
+import { DigitsSpan } from "./DigitsSpan";
 
 export function Timer() {
     const { time, isTimerStart, initialTime } = useStoreTime();
@@ -29,8 +30,15 @@ export function Timer() {
     return (
         <div className={styles.container}>
             <div className={styles.timer} onClick={toggleEditForm}>
-                {hours > 0 && <span>{displayTime(hours)} : </span>}
-                <span>{displayTime(minutes)}</span> : <span>{displayTime(seconds)}</span>
+                {hours > 0 && (
+                    <span className={styles.hours}>
+                        <DigitsSpan name="hours" value={hours} />
+                        <span> : </span>
+                    </span>
+                )}
+                <DigitsSpan name="minutes" value={minutes} />
+                :
+                <DigitsSpan name="seconds" value={seconds} />
             </div>
             <EditForm />
         </div>
