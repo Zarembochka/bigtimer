@@ -19,6 +19,7 @@ export function Timer() {
         setEditedTime(initialTime);
     };
     useEffect(() => {
+        const soundFinish = new Audio("/sounds/finish.mp3");
         let formattedTime = "";
         if (hours > 0) {
             formattedTime = `${displayTime(hours)}:${displayTime(minutes)}:${displayTime(seconds)}`;
@@ -26,7 +27,11 @@ export function Timer() {
             formattedTime = `${displayTime(minutes)}:${displayTime(seconds)}`;
         }
         document.title = `${formattedTime} Countdown | Bigtimer`;
-    }, [hours, minutes, seconds]);
+
+        if (time === 0) {
+            soundFinish.play();
+        }
+    }, [hours, minutes, seconds, time]);
     return (
         <div className={styles.container}>
             <div className={styles.timer} onClick={toggleEditForm}>
