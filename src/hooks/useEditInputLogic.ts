@@ -12,6 +12,43 @@ export function useEditInputLogic(name: string) {
         return 0;
     };
 
+    const changeHours = (delta: number) => {
+        let changedHours = hours + delta;
+        if (changedHours > 24) {
+            changedHours = 0;
+        }
+        if (changedHours < 0) {
+            changedHours = 24;
+        }
+        return changedHours;
+    };
+
+    const changeMinutesAndSeconds = (startValue: number, delta: number) => {
+        let changedValue = startValue + delta;
+        if (changedValue > 59) {
+            changedValue = 0;
+        }
+        if (changedValue < 0) {
+            changedValue = 59;
+        }
+        return changedValue;
+    };
+
+    const saveChangedValue = (type: string, delta: number) => {
+        if (type === "hours") {
+            const changedHours = changeHours(delta);
+            setEditedTimeByValues(changedHours, minutes, seconds);
+        }
+        if (type === "minutes") {
+            const changedMinutes = changeMinutesAndSeconds(minutes, delta);
+            setEditedTimeByValues(hours, changedMinutes, seconds);
+        }
+        if (type === "seconds") {
+            const changedseconds = changeMinutesAndSeconds(seconds, delta);
+            setEditedTimeByValues(hours, minutes, changedseconds);
+        }
+    };
+
     const changeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         if (/^\d*$/.test(value)) {
@@ -29,40 +66,21 @@ export function useEditInputLogic(name: string) {
     const wheelHandle = (e: React.WheelEvent<HTMLInputElement>, type: string) => {
         e.preventDefault();
         const delta = e.deltaY > 0 ? -1 : 1;
-        if (type === "hours") {
-            let changedHours = hours + delta;
-            if (changedHours > 24) {
-                changedHours = 0;
-            }
-            if (changedHours < 0) {
-                changedHours = 24;
-            }
-            setEditedTimeByValues(changedHours, minutes, seconds);
-        }
-        if (type === "minutes") {
-            let changedMinutes = minutes + delta;
-            if (changedMinutes > 59) {
-                changedMinutes = 0;
-            }
-            if (changedMinutes < 0) {
-                changedMinutes = 59;
-            }
-            setEditedTimeByValues(hours, changedMinutes, seconds);
-        }
-        if (type === "seconds") {
-            let changedseconds = seconds + delta;
-            if (changedseconds > 59) {
-                changedseconds = 0;
-            }
-            if (changedseconds < 0) {
-                changedseconds = 59;
-            }
-            setEditedTimeByValues(hours, minutes, changedseconds);
+        saveChangedValue(type, delta);
+    };
+
+    const keyboardHandle = (e: React.KeyboardEvent<HTMLInputElement>, type: string) => {
+        e.preventDefault();
+        const codeKey = e.code;
+        if (codeKey === "ArrowUp" || codeKey === "ArrowDown") {
+            const delta = codeKey === "ArrowUp" ? 1 : -1;
+            saveChangedValue(type, delta);
         }
     };
     return {
         value: getCurrentValue(),
         changeHandle,
         wheelHandle,
+        keyboardHandle,
     };
 }
