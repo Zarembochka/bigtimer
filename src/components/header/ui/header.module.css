@@ -14,3 +14,7 @@
         height: 24px;
     }
 }
+
+.hide {
+    visibility: hidden;
+}
