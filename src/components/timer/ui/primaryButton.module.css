@@ -8,10 +8,6 @@
     cursor: pointer;
     height: 3rem;
     font-weight: 600;
-    visibility: visible;
-    &:disabled {
-        visibility: hidden;
-    }
     &:hover {
         background-color: var(--orange);
     }
