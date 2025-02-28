@@ -9,7 +9,8 @@ interface IStoreTime {
     decrease: () => void;
     start: () => void;
     toggleRepeat: () => void;
-    setTime: (seconds: number) => void;
+    setTime: (secondsInitial: number, secondsTime?: number, isStarted?: boolean) => void;
+    setRepeat: (value: boolean) => void;
 }
 
 export const useStoreTime = create<IStoreTime>((set, get) => {
@@ -26,8 +27,13 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                     newTime += 5;
                 } else if (newTime < 300) {
                     newTime += 30;
-                } else {
+                } else if (newTime < 3600) {
                     newTime += 60;
+                } else {
+                    newTime += 900;
+                }
+                if (newTime >= 86400) {
+                    newTime = 86400;
                 }
                 return { initialTime: newTime, time: newTime };
             }),
@@ -78,9 +84,20 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
         toggleRepeat: () => {
             set((state) => ({ isRepeat: !state.isRepeat }));
         },
-        setTime: (seconds: number) => {
-            set(() => ({ time: seconds }));
-            set(() => ({ initialTime: seconds }));
+        setTime: (secondsInitial, secondsTime?, isStarted?) => {
+            if (secondsInitial > 86400) {
+                secondsInitial = 86400;
+            }
+            set(() => ({ initialTime: secondsInitial }));
+            set(() => ({ time: secondsTime ? secondsTime : secondsInitial }));
+            if (isStarted) {
+                get().start();
+            }
+        },
+        setRepeat: (value: boolean) => {
+            set(() => ({
+                isRepeat: value,
+            }));
         },
     };
 });
