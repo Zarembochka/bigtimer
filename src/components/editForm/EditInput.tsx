@@ -7,7 +7,7 @@ interface IEditInput {
 }
 
 export function EditInput({ name }: IEditInput) {
-    const { value, changeHandle, wheelHandle } = useEditInputLogic(name);
+    const { value, changeHandle, wheelHandle, keyboardHandle } = useEditInputLogic(name);
     return (
         <div className={styles.digits}>
             <input
@@ -16,6 +16,7 @@ export function EditInput({ name }: IEditInput) {
                 value={displayTime(value)}
                 onChange={(e) => changeHandle(e)}
                 onWheel={(e) => wheelHandle(e, name)}
+                onKeyUp={(e) => keyboardHandle(e, name)}
             />
             <label htmlFor={name} className={styles.label}>
                 <span>{name}</span>
