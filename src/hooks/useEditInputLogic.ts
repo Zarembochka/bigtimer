@@ -50,14 +50,25 @@ export function useEditInputLogic(name: string) {
     };
 
     const changeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
+        const value = e.target.value.slice(1);
         if (/^\d*$/.test(value)) {
-            const newValue = Number(value);
+            let newValue = Number(value);
             if (name === "hours") {
+                if (newValue > 24) {
+                    newValue = 0;
+                }
                 setEditedTimeByValues(newValue, minutes, seconds);
-            } else if (name === "minutes") {
+            }
+            if (name === "minutes") {
+                if (newValue > 59) {
+                    newValue = 0;
+                }
                 setEditedTimeByValues(hours, newValue, seconds);
-            } else if (name === "seconds") {
+            }
+            if (name === "seconds") {
+                if (newValue > 59) {
+                    newValue = 0;
+                }
                 setEditedTimeByValues(hours, minutes, newValue);
             }
         }
