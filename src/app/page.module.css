@@ -31,7 +31,7 @@
 .main {
     width: 100%;
     display: grid;
-    grid-template-columns: 100px 1fr 100px;
+    grid-template-columns: 7vw 1fr 7vw;
     justify-items: center;
     align-items: center;
 }
@@ -128,14 +128,13 @@ a.secondary {
     }
 }
 
-@media (max-width: 600px) {
-    .page {
-        padding: 32px;
-        padding-bottom: 80px;
-    }
-
+@media (max-width: 975px) {
     .main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         align-items: center;
+        row-gap: 45px;
     }
 
     .main ol {

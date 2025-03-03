@@ -5,8 +5,9 @@ export function useEditFormHideLogic() {
 
     const clickHandle = (e: React.MouseEvent<HTMLDivElement>) => {
         const editForm = document.getElementById("editForm");
-        if (isFormShown && editForm) {
-            if (!editForm.contains(e.target as Node)) {
+        const startBtn = document.getElementById("startBtn");
+        if (isFormShown && editForm && startBtn) {
+            if (!editForm.contains(e.target as Node) && !startBtn.contains(e.target as Node)) {
                 toggleEditForm();
             }
         }
