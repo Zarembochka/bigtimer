@@ -8,6 +8,7 @@
     cursor: pointer;
     height: 3rem;
     font-weight: 600;
+
     &:hover {
         background-color: var(--orange);
     }
@@ -15,6 +16,14 @@
 
 .roundedBtn {
     width: 3rem;
+
+    & span {
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: normal;
+    }
 }
 
 .controls {

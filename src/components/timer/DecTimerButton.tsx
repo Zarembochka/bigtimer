@@ -22,7 +22,7 @@ export function DecTimerButton() {
             className={[styles.primaryBtn, styles.roundedBtn].join(" ")}
             onClick={decTime}
         >
-            -
+            <span>-</span>
         </motion.button>
     );
 }

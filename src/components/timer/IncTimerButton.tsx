@@ -22,7 +22,7 @@ export function IncTimerButton() {
             className={[styles.primaryBtn, styles.roundedBtn].join(" ")}
             onClick={incTime}
         >
-            +
+            <span>+</span>
         </motion.button>
     );
 }
