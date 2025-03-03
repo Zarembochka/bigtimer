@@ -11,10 +11,10 @@ import { DigitsSpan } from "./DigitsSpan";
 export function Timer() {
     const { time, isTimerStart, initialTime } = useStoreTime();
     const [hours, minutes, seconds] = getTimeFromSeconds(time);
-    const { toggle, setEditedTime } = useStoreEditForm();
-    const toggleEditForm = () => {
+    const { toggleEditForm, setEditedTime } = useStoreEditForm();
+    const handleEditForm = () => {
         if (!isTimerStart) {
-            toggle();
+            toggleEditForm();
         }
         setEditedTime(initialTime);
     };
@@ -34,7 +34,7 @@ export function Timer() {
     }, [hours, minutes, seconds, time]);
     return (
         <div className={styles.container}>
-            <div className={styles.timer} onClick={toggleEditForm}>
+            <div className={styles.timer} onClick={handleEditForm}>
                 {hours > 0 && (
                     <span className={styles.hours}>
                         <DigitsSpan name="hours" value={hours} />

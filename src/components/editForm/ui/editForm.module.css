@@ -1,6 +1,6 @@
 .form {
-    background-color: var(--background);
-    padding: 10px;
+    background-color: var(--white);
+    padding: 25px;
     border-radius: 10px;
     position: fixed;
     z-index: 5;
@@ -10,7 +10,7 @@
 }
 
 .divider {
-    color: var(--foreground);
+    color: var(--black);
 }
 
 .input {
@@ -23,9 +23,10 @@
     padding: 0;
     text-align: center;
     color: var(--brown);
+    background-color: transparent;
     &:focus {
         cursor: default;
-        color: var(--foreground);
+        color: var(--black);
         background-color: var(--yellow-edit);
     }
 }

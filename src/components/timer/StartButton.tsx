@@ -7,11 +7,11 @@ import { useStoreEditForm } from "@/store/storeEditForm";
 
 export function StartButton() {
     const { isTimerStart, start, setTime } = useStoreTime();
-    const { isFormShown, editedTime, toggle } = useStoreEditForm();
+    const { isFormShown, editedTime, toggleEditForm } = useStoreEditForm();
 
     const startTime = () => {
         if (isFormShown) {
-            toggle();
+            toggleEditForm();
             setTime(editedTime);
             return;
         }
@@ -30,6 +30,7 @@ export function StartButton() {
             whileTap={{ scale: 0.8 }}
             className={styles.primaryBtn}
             onClick={startTime}
+            id="startBtn"
         >
             {isFormShown ? "Apply" : isTimerStart ? "Pause" : "Start"}
         </motion.button>

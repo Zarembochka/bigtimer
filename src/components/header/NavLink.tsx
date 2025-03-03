@@ -17,7 +17,7 @@ export default function NavLink(props: INavLink) {
             <li>
                 <Link className={styles.navlink} href={props.hrefSrc}>
                     {props.icon}
-                    {props.title}
+                    <span>{props.title}</span>
                 </Link>
             </li>
         </motion.div>

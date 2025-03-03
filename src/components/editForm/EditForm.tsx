@@ -9,7 +9,7 @@ export function EditForm() {
     return (
         <>
             {isFormShown && (
-                <Form action="" className={styles.form}>
+                <Form action="" className={styles.form} id="editForm">
                     <EditInput name="hours" />
                     <span className={styles.divider}> : </span>
                     <EditInput name="minutes" />
