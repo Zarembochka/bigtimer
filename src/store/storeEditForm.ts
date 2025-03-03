@@ -4,7 +4,7 @@ interface IStoreEditForm {
     editedTime: number;
     isFormShown: boolean;
     setEditedTime: (value: number) => void;
-    toggle: () => void;
+    toggleEditForm: () => void;
     setEditedTimeByValues: (hours: number, minutes: number, seconds: number) => void;
 }
 
@@ -15,7 +15,7 @@ export const useStoreEditForm = create<IStoreEditForm>((set) => {
         setEditedTime: (value: number) => {
             set(() => ({ editedTime: value }));
         },
-        toggle: () => {
+        toggleEditForm: () => {
             set((state) => ({ isFormShown: !state.isFormShown }));
         },
         setEditedTimeByValues: (hours, minutes, seconds) => {
