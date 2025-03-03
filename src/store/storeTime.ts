@@ -46,8 +46,10 @@ export const useStoreTime = create<IStoreTime>((set, get) => {
                     newTime -= 5;
                 } else if (newTime <= 300) {
                     newTime -= 30;
-                } else {
+                } else if (newTime <= 3600) {
                     newTime -= 60;
+                } else {
+                    newTime -= 900;
                 }
                 return { initialTime: newTime, time: newTime };
             }),
