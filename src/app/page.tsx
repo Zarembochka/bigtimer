@@ -1,28 +1,21 @@
 "use client";
 
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 import styles from "./page.module.css";
-import { useEffect } from "react";
-import { useStoreTime } from "../store/storeTime";
-import { useSearchParams } from "next/navigation";
-import { Main } from "@/components/Main";
+import { Main } from "@/components/timer/Main";
+import { useTimerParamsFromSearchParams } from "@/hooks/useTimerParamsFromSearchParams";
+import { useHeaderHideLogic } from "@/hooks/useHeaderHideLogic";
+import { useEditFormHideLogic } from "@/hooks/useEditFormHideLogic";
 
 export default function Home() {
-    const searchParams = useSearchParams();
-    const setTime = useStoreTime((state) => state.setTime);
-    const seconds = searchParams.get("seconds");
+    useTimerParamsFromSearchParams();
 
-    useEffect(() => {
-        if (!seconds) {
-            setTime(600);
-        } else {
-            const parsedSeconds = parseInt(seconds, 10);
-            setTime(parsedSeconds);
-        }
-    }, [searchParams, setTime, seconds]);
+    const { mouseMoveHandle } = useHeaderHideLogic();
+
+    const { clickHandle } = useEditFormHideLogic();
 
     return (
-        <div className={styles.page}>
+        <div className={styles.page} onMouseMove={mouseMoveHandle} onClick={clickHandle}>
             <Header />
             <Main />
         </div>

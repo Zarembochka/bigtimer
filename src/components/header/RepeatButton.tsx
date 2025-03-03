@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import styles from "./ui/repeatButton.module.css";
-import { useStoreTime } from "../store/storeTime";
+import { useStoreTime } from "@/store/storeTime";
 
 export default function RepeatInput() {
     const { isRepeat } = useStoreTime();

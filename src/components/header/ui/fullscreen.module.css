@@ -7,3 +7,9 @@
         color: var(--orange);
     }
 }
+
+@media (max-width: 665px) {
+    .container span {
+        display: none;
+    }
+}

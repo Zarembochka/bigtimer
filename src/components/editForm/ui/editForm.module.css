@@ -1,0 +1,49 @@
+.form {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 5;
+    font-size: 12vw;
+    display: flex;
+    align-items: center;
+}
+
+.divider {
+    color: var(--black);
+}
+
+.input {
+    border: none;
+    outline: none;
+    line-height: 1.15;
+    font-size: 15vw;
+    font-family: inherit;
+    width: 18vw;
+    padding: 0;
+    text-align: center;
+    color: var(--brown);
+    background-color: transparent;
+    &:focus {
+        cursor: default;
+        color: var(--black);
+        background-color: var(--yellow-edit);
+    }
+}
+
+.digits {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    color: var(--brown);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 1.1vw;
+    & span {
+        grid-column: 2;
+        display: flex;
+        justify-content: center;
+    }
+}
